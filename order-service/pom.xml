@@ -8,16 +8,16 @@
 		<version>3.0.7</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.app</groupId>
+	<groupId>com.service</groupId>
 	<artifactId>order-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>order-service</name>
-	<description>Service commande</description>
+	<description>Service order</description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-cloud.version>2022.0.2</spring-cloud.version>
 	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -25,6 +25,10 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 
 		<dependency>
@@ -40,15 +44,20 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
 		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-netflix-eureka-client</artifactId>
-			<version>4.0.1</version>
-		</dependency>
-
 	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -66,33 +75,15 @@
 			</plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			<id>netflix-candidates</id>
+			<name>Netflix Candidates</name>
+			<url>https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
-
-
-	<dependencyManagement>
-	
-
-		<dependencies>
-
-			<dependency>
-				<groupId>com.netflix.servo</groupId>
-				<artifactId>servo-core</artifactId>
-				<version>0.5.3</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.google.guava</groupId>
-				<artifactId>guava</artifactId>
-				<version>31.1-jre</version>
-			</dependency>
-
-			<dependency>
-				<groupId>jakarta.inject</groupId>
-				<artifactId>jakarta.inject-api</artifactId>
-				<version>2.0.0</version>
-			</dependency>
-
-		</dependencies>
-
-	</dependencyManagement>
 </project>

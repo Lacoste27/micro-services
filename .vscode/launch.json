@@ -5,7 +5,8 @@
             "name": "GatewayApplication",
             "request": "launch",
             "mainClass": "com.services.gateway.GatewayApplication",
-            "projectName": "gateway"
+            "projectName": "gateway",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=45611 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=gateway"
         },
         {
             "type": "java",
@@ -26,7 +27,8 @@
             "mainClass": "com.app.productservice.ProductServiceApplication",
             "projectName": "product-service",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=46585 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=product-service"
         },
         {
             "type": "java",
@@ -35,6 +37,17 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.service.discoveryservice.DiscoveryServiceApplication",
             "projectName": "discovery-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=43981 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=discovery-service"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-OrderServiceApplication<order-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.service.orderservice.OrderServiceApplication",
+            "projectName": "order-service",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
